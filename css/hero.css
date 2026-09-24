@@ -246,3 +246,23 @@
   opacity: 1;
   transform: none;
 }
+
+/* Tanpa JavaScript (atau main.js gagal dimuat): tampilkan hasil akhir animasi */
+.no-js .paper {
+  transform: translate(-8%, -4%) rotate(-9deg) scale(0.86);
+  opacity: 0.5;
+}
+.no-js .browser {
+  opacity: 1;
+  transform: none;
+}
+.no-js .toast {
+  opacity: 1;
+  transform: none;
+}
+.no-js .scan {
+  display: none;
+}
+.no-js .url::before {
+  content: "linkcv.id/rani-putri";
+}
