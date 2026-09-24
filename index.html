@@ -172,8 +172,9 @@
         <div class="head">
           <h2>Setiap CV punya gayanya sendiri.</h2>
           <p>
-            Contoh hasil Link CV untuk profesi yang berbeda. Arahkan kursor atau
-            ketuk kartu untuk melihat halamannya bergulir.
+            Contoh hasil Link CV untuk profesi yang berbeda. Arahkan kursor
+            untuk melihat halamannya bergulir. Klik atau ketuk kartu untuk
+            membukanya sebagai pratinjau penuh.
           </p>
         </div>
         <div class="gallery" id="gallery">
@@ -502,6 +503,28 @@
         <span>&copy; 2026 Link CV</span>
       </div>
     </footer>
+
+    <dialog id="pv" aria-label="Pratinjau CV">
+      <div class="pv-card">
+        <div class="pv-bar">
+          <span class="pv-url" id="pvUrl"></span>
+          <button
+            type="button"
+            class="pv-x"
+            id="pvClose"
+            aria-label="Tutup pratinjau"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="pv-body" id="pvBody"></div>
+        <div class="pv-foot">
+          <a class="btn" id="pvCta" href="#" target="_blank" rel="noopener"
+            >Buat CV seperti ini, Rp99.000</a
+          >
+        </div>
+      </div>
+    </dialog>
 
     <script src="js/main.js" defer></script>
   </body>

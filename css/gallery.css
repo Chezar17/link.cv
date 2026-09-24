@@ -5,11 +5,13 @@
   gap: 22px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  scroll-padding: 0 24px;
   margin: 0 -24px;
   padding: 6px 24px 28px;
   scrollbar-width: thin;
 }
 .shot {
+  cursor: pointer;
   flex: 0 0 min(78vw, 272px);
   scroll-snap-align: start;
   outline-offset: 6px;
@@ -24,7 +26,6 @@
     box-shadow 0.3s;
 }
 .shot:hover .frame,
-.shot.on .frame,
 .shot:focus-visible .frame {
   transform: translateY(-4px);
   box-shadow: 0 26px 40px -26px var(--blue);
@@ -57,8 +58,25 @@
   text-overflow: ellipsis;
 }
 .view {
+  position: relative;
   height: 330px;
   overflow: hidden;
+}
+/* petunjuk bahwa kartu bisa dibuka penuh */
+.view::after {
+  content: "Lihat penuh";
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 999px;
+  box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
 }
 .mini {
   font-size: 10px;
@@ -67,7 +85,6 @@
   font-family: "Instrument Sans", system-ui, sans-serif;
 }
 .shot:hover .mini,
-.shot.on .mini,
 .shot:focus-visible .mini {
   transform: translateY(calc(var(--s, 0px) * -1));
 }
@@ -608,4 +625,108 @@
   padding: 9px 11px;
   margin-top: 8px;
   font-size: 9.5px;
+}
+
+/* Pratinjau penuh: dialog layar penuh berisi miniatur yang bisa digulir */
+#pv {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  overflow: hidden;
+}
+#pv[open] {
+  display: grid;
+  place-items: center;
+}
+#pv::backdrop {
+  background: rgba(6, 13, 36, 0.72);
+  backdrop-filter: blur(6px);
+}
+.pv-card {
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 460px);
+  height: min(100%, 860px);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.6);
+}
+.pv-bar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--sky);
+  border-bottom: 1px solid var(--line);
+}
+.pv-url {
+  flex: 1;
+  min-width: 0;
+  background: var(--card);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pv-x {
+  flex: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+.pv-body {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+.pv-body .mini {
+  width: 270px;
+  zoom: var(--z, 1);
+  transition: none;
+}
+.pv-foot {
+  flex: none;
+  display: flex;
+  padding: 12px 14px;
+  background: var(--card);
+  border-top: 1px solid var(--line);
+}
+.pv-foot .btn {
+  flex: 1;
+  text-align: center;
+}
+@media (max-width: 520px) {
+  .pv-card {
+    height: 100%;
+    border: 0;
+    border-radius: 0;
+  }
+  .pv-bar {
+    padding-top: calc(10px + env(safe-area-inset-top, 0px));
+  }
+  .pv-foot {
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  }
 }
