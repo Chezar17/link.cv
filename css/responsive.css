@@ -1,0 +1,61 @@
+/* Responsif (mobile) dan preferensi pengurangan gerak */
+@media (max-width: 860px) {
+  .hero {
+    padding-top: 40px;
+  }
+  .hero .wrap,
+  .price,
+  .vs {
+    grid-template-columns: 1fr;
+  }
+  .stage {
+    margin: 0 auto;
+  }
+  .steps {
+    grid-template-columns: 1fr;
+    padding-top: 0;
+    padding-left: 52px;
+  }
+  .steps::before {
+    top: 0;
+    bottom: 0;
+    left: 15px;
+    right: auto;
+    width: 2px;
+    height: auto;
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  .steps.in::before {
+    transform: scaleY(1);
+  }
+  .step::before {
+    top: 0;
+    left: -52px;
+  }
+  .perks {
+    grid-template-columns: 1fr;
+  }
+  .perk,
+  .perk:nth-child(even) {
+    padding: 26px 0;
+    border-left: 0;
+  }
+  .price {
+    padding: 36px 26px;
+  }
+  section {
+    padding: 64px 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .steps::before {
+    transform: none;
+  }
+}

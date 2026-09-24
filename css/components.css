@@ -1,0 +1,73 @@
+/* Komponen bersama: navigasi, logo, dan tombol */
+/* nav */
+nav {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 10;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+nav .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.logo img,
+.flogo img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+.flogo img {
+  height: 52px;
+}
+.dk {
+  display: none !important;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .lt {
+    display: none !important;
+  }
+  :root:not([data-theme="light"]) .dk {
+    display: block !important;
+  }
+}
+:root[data-theme="dark"] .lt {
+  display: none !important;
+}
+:root[data-theme="dark"] .dk {
+  display: block !important;
+}
+.btn {
+  display: inline-block;
+  background: var(--blue);
+  color: var(--onblue);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -8px var(--blue);
+}
+.btn.ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+.btn.ghost:hover {
+  box-shadow: none;
+  border-color: var(--blue);
+}

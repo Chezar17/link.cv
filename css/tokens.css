@@ -1,0 +1,41 @@
+/* Design tokens: warna, font, dan tema terang/gelap */
+:root {
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  --bg: #f6f9ff;
+  --ink: #192b41;
+  --muted: #55648a;
+  --blue: #2478e3;
+  --sky: #dfeeff;
+  --line: #d3ddf3;
+  --card: #ffffff;
+  --onblue: #ffffff;
+  --tick: #69bcfd;
+  --display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #060d24;
+    --ink: #eaf0ff;
+    --muted: #9aa9cf;
+    --blue: #69bcfd;
+    --sky: #12224f;
+    --line: #1b2a55;
+    --card: #0d1836;
+    --onblue: #0a1a3f;
+    --tick: #2478e3;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #060d24;
+  --ink: #eaf0ff;
+  --muted: #9aa9cf;
+  --blue: #69bcfd;
+  --sky: #12224f;
+  --line: #1b2a55;
+  --card: #0d1836;
+  --onblue: #0a1a3f;
+  --tick: #2478e3;
+}
