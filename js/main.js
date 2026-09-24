@@ -91,6 +91,11 @@
           mini.offsetHeight - mini.parentElement.clientHeight,
         );
         mini.style.setProperty("--s", distance + "px");
+        /* miniatur yang lebih panjang bergulir lebih lama */
+        mini.style.setProperty(
+          "--t",
+          Math.min(14, Math.max(4.5, distance / 80)) + "s",
+        );
       });
     }
 
